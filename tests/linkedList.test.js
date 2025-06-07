@@ -42,6 +42,10 @@ describe("Linked List", () => {
     });
   });
 
+  test("size", () => {
+    expect(linkedList.size).toBe(3);
+  });
+
   test("head", () => {
     expect(linkedList.head.value).toBe("one");
   });

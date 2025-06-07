@@ -3,28 +3,28 @@ import Node from "./Node.js";
 class LinkedList {
   head = null;
   tail = null;
-  size = 0;
+  #size = 0;
 
   append(value) {
     const newNode = new Node(value);
-    if (this.size === 0) {
+    if (this.#size === 0) {
       this.head = newNode;
     } else {
       this.tail.nextNode = newNode;
     }
     this.tail = newNode;
-    this.size++;
+    this.#size++;
   }
 
   prepend(value) {
     const newNode = new Node(value);
-    if (this.size === 0) {
+    if (this.#size === 0) {
       this.tail = newNode;
     } else {
       newNode.nextNode = this.head;
     }
     this.head = newNode;
-    this.size++;
+    this.#size++;
   }
 
   toString() {
@@ -38,6 +38,10 @@ class LinkedList {
       currNode = currNode.nextNode;
     }
     return string;
+  }
+
+  get size() {
+    return this.#size;
   }
 }
 
