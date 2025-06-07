@@ -51,7 +51,7 @@ describe("Linked List", () => {
   });
 
   test("tail", () => {
-    expect(linkedList.head.value).toBe("three");
+    expect(linkedList.tail.value).toBe("three");
   });
 
   test("at", () => {
