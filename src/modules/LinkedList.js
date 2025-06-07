@@ -40,6 +40,57 @@ class LinkedList {
     return string;
   }
 
+  at(index) {
+    if (index >= this.size || index < 0) {
+      return null;
+    }
+
+    let currNode = this.head;
+    // don't loop if index is zero, since currNode is already the head
+    for (let i = 1; i <= index; i++) {
+      currNode = currNode.nextNode;
+    }
+
+    return currNode;
+  }
+
+  pop() {
+    const popNode = this.#tail;
+
+    // new tail will be second-to-last node
+    let newTail = this.at(this.size - 2);
+    this.#tail = newTail;
+    newTail.nextNode = null;
+
+    return popNode;
+  }
+
+  contains(value) {
+    let currNode = this.#head;
+    while (currNode) {
+      if (currNode.value === value) {
+        return true;
+      } else {
+        currNode = currNode.nextNode;
+      }
+    }
+    return false;
+  }
+
+  find(value) {
+    let currNode = this.#head;
+    let i = 0;
+    while (currNode) {
+      if (currNode.value === value) {
+        return i;
+      } else {
+        currNode = currNode.nextNode;
+        i++;
+      }
+    }
+    return null;
+  }
+
   get head() {
     return this.#head;
   }
