@@ -91,6 +91,38 @@ class LinkedList {
     return null;
   }
 
+  insertAt(value, index) {
+    const newNode = new Node(value);
+    if (index === 0) {
+      newNode.nextNode = this.#head;
+      this.#head = newNode;
+      this.#size++;
+      return;
+    }
+    const nodeBeforeInsert = this.at(index - 1);
+    if (nodeBeforeInsert) {
+      newNode.nextNode = nodeBeforeInsert.nextNode;
+      nodeBeforeInsert.nextNode = newNode;
+      this.#size++;
+    }
+  }
+
+  removeAt(index) {
+    if (index >= this.size || index < 0) {
+      return;
+    }
+
+    if (index === 0) {
+      this.#head = this.#head.nextNode;
+      this.#size--;
+      return;
+    }
+
+    const nodeBeforeRemove = this.at(index - 1);
+    nodeBeforeRemove.nextNode = nodeBeforeRemove.nextNode.nextNode;
+    this.#size--;
+  }
+
   get head() {
     return this.#head;
   }
